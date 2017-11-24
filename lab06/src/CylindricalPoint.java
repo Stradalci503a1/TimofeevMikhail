@@ -7,6 +7,14 @@ public class CylindricalPoint extends PolarPoint {
         this.z = z;
     }
 
+    public double getRho(){
+        return super.getRho();
+    }
+
+    public double getPhi(){
+        return super.getPhi();
+    }
+
     public double getZ() {
         return z;
     }

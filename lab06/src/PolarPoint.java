@@ -6,12 +6,6 @@ public class PolarPoint {
     PolarPoint(double rho, double phi){
         this.rho = rho;
         this.phi = phi;
-        while (this.phi >= 2 * Math.PI){
-            this.phi -= 2 * Math.PI;
-        }
-        while (this.phi < 0){
-            this.phi += 2 * Math.PI;
-        }
     }
 
     public double getRho() {
