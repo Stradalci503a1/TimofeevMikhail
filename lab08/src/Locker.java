@@ -1,10 +1,8 @@
-package com.company;
-
 public class Locker {
     private int value;
     private boolean locked;
 
-    public Locker (){
+    public Locker (int value){
         this.locked = false;
         this.value = 0;
     }
