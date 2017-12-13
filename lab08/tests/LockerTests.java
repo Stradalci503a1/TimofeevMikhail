@@ -11,20 +11,20 @@ public class LockerTests {
 
         //Set and get value
         locker.set(15);
-        Assert.assertEquals(15, locker.get());
+        Assertions.assertEquals(15, locker.get());
 
         //Lock and change
         locker.lock();
         try {
             locker.set(3);
-            Assert.fail("Locker locked but value changed");
+            Assertions.fail("Locker locked but value changed");
         } catch (LockerLockedException exception) {
-            Assert.assertEquals(15, locker.get());
+            Assertions.assertEquals(15, locker.get());
         }
 
         //Unlock and change
         locker.unlock();
         locker.set(23);
-        Assert.assertEquals(23, locker.get());
+        Assertions.assertEquals(23, locker.get());
 }
 }
