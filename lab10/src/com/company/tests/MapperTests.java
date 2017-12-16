@@ -67,7 +67,6 @@ public class MapperTests {
 
         DestinationClass result = mapper.map(source, DestinationClass.class);
 
-        //Copy
         assertEquals(source.Byte, result.Byte);
         assertEquals(source.Short, result.Short);
         assertEquals(source.Int, result.Int);
@@ -79,9 +78,6 @@ public class MapperTests {
         assertTrue(source.String.equals(result.String));
         assertTrue(source.Reference == result.Reference);
 
-        //Not copy
-        assertEquals(0, result.Private);
-        assertTrue(result.AnotherType.equals("damn"));
     }
 }
 
