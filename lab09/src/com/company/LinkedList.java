@@ -23,7 +23,7 @@ public class LinkedList<T> implements Iterable<T> {
         add(entities);
     }
 
-    //MARK: Adding
+    
     public void add(T value) {
 
         if (isEmpty()) {
@@ -77,10 +77,9 @@ public class LinkedList<T> implements Iterable<T> {
             return;
         }
 
-        //Search
         Container prev = searchElement(position);
 
-        //Adding
+        
         Container added = new Container(value);
         added.prev = prev;
         added.next = prev.next;
@@ -91,7 +90,7 @@ public class LinkedList<T> implements Iterable<T> {
         length++;
     }
 
-    //MARK: Removing
+    
     public boolean removeFirst() {
         if (isEmpty()) {
             return false;
@@ -186,7 +185,7 @@ public class LinkedList<T> implements Iterable<T> {
         while(removeFirst()){}
     }
 
-    //Finding
+    
     public T find(int index) {
 
         if (length <= index || index < 0) {
@@ -250,7 +249,7 @@ public class LinkedList<T> implements Iterable<T> {
         return -1;
     }
 
-    //MARK: Properties
+    
     public T first() {
 
         if (isEmpty()) {
