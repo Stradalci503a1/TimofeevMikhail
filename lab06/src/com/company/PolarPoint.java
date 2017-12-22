@@ -1,3 +1,5 @@
+package com.company;
+
 public class PolarPoint {
 
     private double rho;

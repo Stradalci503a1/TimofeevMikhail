@@ -1,3 +1,5 @@
+package com.company;
+
 import com.sun.javafx.geom.Vec3d;
 
 public class Point {

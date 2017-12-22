@@ -1,7 +1,7 @@
 package tests;
 
-import classes.CylindricalPoint;
-import classes.Point;
+import com.company.CylindricalPoint;
+import com.company.Point;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
