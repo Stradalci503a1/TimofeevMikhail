@@ -20,20 +20,17 @@ public class LinkedListTests {
     @Test
     public void add() {
 
-        //Prepare
         assertEquals(0, list.length());
         assertTrue(list.isEmpty());
         assertFalse(list.isFilled());
 
 
-        //Initialization
         Person first = new Person("Test", 1);
         Person begin = new Person("New", 2);
         Person rangeElement = new Person("range", 3);
         Person insert = new Person("insert", 4);
 
 
-        //Processing
         list.add(first);
         list.addToBegin(begin);
 
@@ -47,7 +44,6 @@ public class LinkedListTests {
         list.insert(insert, 1);
 
 
-        //Check
         assertEquals(0, list.indexOf(begin));
         assertEquals(1, list.indexOf(insert));
         assertEquals(2, list.indexOf(first));
@@ -64,7 +60,6 @@ public class LinkedListTests {
     @Test
     public void remove() {
 
-        //Initializations
         for (int i = 0; i < 10; i++) {
             list.add(new Person(((Integer) i).toString(), i));
         }
@@ -72,28 +67,23 @@ public class LinkedListTests {
 
 
 
-        //First
         list.removeFirst();
         assertEquals(1, list.first().id);
         assertEquals(9, list.length());
 
-        //Last
         list.removeLast();
         assertEquals(8, list.last().id);
         assertEquals(8, list.length());
 
-        //Remove by reference
         list.remove(list.first());
         assertEquals(2, list.first().id);
         assertEquals(7, list.length());
 
-        //Remove by index
         assertEquals(5, list.find(3).id);
         list.remove(3);
         assertEquals(6, list.find(3).id);
         assertEquals(6, list.length());
 
-        //Remove all
         list.removeAll();
         assertTrue(list.isEmpty());
     }
@@ -101,31 +91,26 @@ public class LinkedListTests {
     @Test
     public void find() {
 
-        //Initializations
         for (int i = 0; i < 10; i++) {
             list.add(new Person(((Integer) i).toString(), i));
         }
         assertEquals(10, list.length());
 
 
-        //Find
         assertNull(list.find(-1));
         assertNull(list.find(112));
         assertEquals(list.first().id, list.find(0).id);
         assertEquals(list.last().id, list.find(9).id);
 
-        //Index Of
         assertEquals(-1, list.indexOf(new Person("", 0)));
         Person finded = list.find(6);
         assertEquals(6, list.indexOf(finded));
 
-        //First
         finded = list.first((element) -> element.id == 14);
         assertNull(finded);
         finded = list.first((element) -> element.id % 2 == 1);
         assertEquals(list.find(1), finded);
 
-        //Filter
         Iterable<Person> range = list.filter((element) -> element.id == 1231);
         assertNotNull(range);
         range = list.filter((element) -> element.id > 5);
@@ -134,7 +119,6 @@ public class LinkedListTests {
             assertTrue(element.id > 5);
         }
 
-        //Iterator
         int count = 0;
         for (Person element : new LinkedList<>(list)) {
             assertEquals(count, element.id);
@@ -143,7 +127,6 @@ public class LinkedListTests {
         assertEquals(list.length(), count);
 
 
-        //Check
         assertEquals(10, list.length());
     }
 
