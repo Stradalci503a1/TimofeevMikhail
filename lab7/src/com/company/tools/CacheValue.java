@@ -1,7 +1,7 @@
 package com.company.tools;
 
-import medvedstudio.sandbox.ci.lab7.src.IExpression;
-import medvedstudio.sandbox.ci.lab7.src.unary.Value;
+import com.company.IExpression;
+import com.company.unary.Value;
 
 import java.util.HashMap;
 import java.util.Map;

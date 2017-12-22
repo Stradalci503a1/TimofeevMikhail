@@ -1,16 +1,18 @@
-package test;
+package tests;
 
-import medvedstudio.sandbox.ci.lab7.src.*;
-import medvedstudio.sandbox.ci.lab7.src.binary.*;
-import medvedstudio.sandbox.ci.lab7.src.tools.CacheValue;
-import medvedstudio.sandbox.ci.lab7.src.unary.Negative;
-import medvedstudio.sandbox.ci.lab7.src.unary.Value;
+import com.company.binary.*;
+import com.company.IExpression;
+import com.company.tools.CacheValue;
+import com.company.unary.Absolute;
+import com.company.unary.Negative;
+import com.company.unary.Square;
+import com.company.unary.Value;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ExpressionTests {
+public class ExpressionTest {
 
     private final double eps = 0.0000001;
 
@@ -35,6 +37,22 @@ public class ExpressionTests {
         //Multi
         expression = new Addition("123.123", 1.2, "1.1", 42, "0");
         assertEquals(167.423, expression.calculate(), eps);
+    }
+
+    @Test
+    public void division() {
+
+        //Normal
+        expression = new Division("8.0", 4);
+        assertEquals(2.0, expression.calculate(), eps);
+
+        //With minus
+        expression = new Division("-6.0", 3);
+        assertEquals(-2.0, expression.calculate(), eps);
+
+        //Null
+        expression = new Division("4.2", 0);
+        assertTrue(Double.isNaN(expression.calculate()));
     }
 
     @Test
@@ -79,10 +97,41 @@ public class ExpressionTests {
     }
 
     @Test
+    public void rest() {
+
+        //Normal
+        expression = new Rest("17.0", 5);
+        assertEquals(2.0, expression.calculate(), eps);
+
+        //Divident is negative
+        expression = new Rest("-15.0", 4);
+        assertEquals(1.0, expression.calculate(), eps);
+
+        //Divider is negative
+        expression = new Rest("113.0", -3);
+        assertEquals(2.0, expression.calculate(), eps);
+
+        //Both are negative
+        expression = new Rest("-114.0", -4);
+        assertEquals(2.0, expression.calculate(), eps);
+
+        //Null
+        expression = new Rest("4.2", 0);
+        assertTrue(Double.isNaN(expression.calculate()));
+    }
+
+    @Test
     public void subtraction() {
 
         expression = new Subtraction("1.2", 10.1);
         assertEquals(-8.9, expression.calculate(), eps);
+    }
+
+    @Test
+    public void absolute() {
+
+        expression = new Absolute("-28.0");
+        assertEquals(28.0, expression.calculate(), eps);
     }
 
     @Test
@@ -95,6 +144,18 @@ public class ExpressionTests {
         //Negative
         expression = new Negative(-10.1);
         assertEquals(10.1, expression.calculate(), eps);
+    }
+
+    @Test
+    public void square() {
+
+        //Positive
+        expression = new Square("3.0");
+        assertEquals(9.0, expression.calculate(), eps);
+
+        //Negative
+        expression = new Square("-2.0");
+        assertEquals(4.0, expression.calculate(), eps);
     }
 
     @Test
@@ -173,7 +234,7 @@ public class ExpressionTests {
         assertEquals(1, tester.callCounter);
     }
 
-    private  class TestExpression implements IExpression {
+    private class TestExpression implements IExpression {
 
         public int callCounter;
 

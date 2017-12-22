@@ -3,14 +3,14 @@ package com.company.unary;
 import com.company.IExpression;
 import com.company.tools.CacheCalculation;
 
-public class Negative extends UnaryExpression implements IExpression {
+public class Square extends UnaryExpression implements IExpression {
 
     private CacheCalculation cacheValue;
 
-    public Negative(Object value) {
+    public Square(Object value) {
         super(value);
 
-        cacheValue = new CacheCalculation(() -> -this.value.calculate());
+        cacheValue = new CacheCalculation(() -> Math.pow(this.value.calculate(), 2.0));
     }
 
     @Override
