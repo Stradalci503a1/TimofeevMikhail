@@ -1,7 +1,7 @@
 package com.company.binary;
 
-import medvedstudio.sandbox.ci.lab7.src.IExpression;
-import medvedstudio.sandbox.ci.lab7.src.tools.CacheCalculation;
+import com.company.IExpression;
+import com.company.tools.CacheCalculation;
 
 public class Subtraction extends BinaryExpression implements IExpression {
 
