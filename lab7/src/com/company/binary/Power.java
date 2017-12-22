@@ -1,7 +1,7 @@
 package com.company.binary;
 
-import medvedstudio.sandbox.ci.lab7.src.IExpression;
-import medvedstudio.sandbox.ci.lab7.src.tools.CacheCalculation;
+import com.company.IExpression;
+import com.company.tools.CacheCalculation;
 
 public class Power extends BinaryExpression implements IExpression {
 
@@ -10,20 +10,20 @@ public class Power extends BinaryExpression implements IExpression {
 
         this.cache = new CacheCalculation(() -> {
 
-            //Normal
+            
             double basis = this.getLeft().calculate();
             double extent = this.getRight().calculate();
             if (basis > 0) {
                 return Math.pow(basis, extent);
             }
 
-            //Without root
+            
             String[] split = ((Double) extent).toString().split(".");
             if (1 == split.length) {
                 return Math.pow(basis, extent);
             }
-
-            //With root
+            
+            
             double decimalExtent = Math.floor(Math.abs(extent)) * Math.signum(extent);
             double result = Math.pow(basis, decimalExtent);
 
@@ -33,29 +33,6 @@ public class Power extends BinaryExpression implements IExpression {
             }
 
             return Double.NaN;
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//            int denominator = (int)Math.pow(10, split[1].length());
-//            double tempNumerator = extent * denominator;
-//            int numerator = Integer.parseInt(((Double)tempNumerator).toString().split(".")[0]);
-//
-//
-//
-//            int gcd = Power.gcd(denominator, numerator);
-//
-//            if ((denominator / gcd) % 2 == 1){
-//            }
-//
-//            return Double.NaN;
         });
     }
 
