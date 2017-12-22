@@ -1,8 +1,8 @@
 package com.company.binary;
 
-import medvedstudio.sandbox.ci.lab7.src.IExpression;
-import medvedstudio.sandbox.ci.lab7.src.tools.CacheCalculation;
-import medvedstudio.sandbox.ci.lab7.src.unary.Value;
+import com.company.IExpression;
+import com.company.tools.CacheCalculation;
+import com.company.unary.Value;
 
 public class Multiplication extends BinaryExpression implements IExpression {
 
